@@ -1,5 +1,3 @@
-// Matveev S.A. 2026
-
 /**
  * В реальном графе потока управление
  *  1. скорее всего нет изолированных вершин
@@ -15,18 +13,17 @@
 
 #include "digraph.hpp"
 
-namespace bb_graphs::random_cfg {
+namespace cfg::random_cfg {
 
 class RandomCFG {
 public:
-    RandomCFG();
+    RandomCFG(int vertex = 10);
 
 public:
-
     const digraph::DIGraph& cfg() const noexcept;
 
 private:
     digraph::DIGraph graph_;
 };
 
-} // namespace bb_graphs::random_cfg 
+} // namespace cfg::random_cfg 

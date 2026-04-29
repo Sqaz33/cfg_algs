@@ -4,7 +4,7 @@
 
 #include "graphviz.hpp"
 
-namespace bb_graphs::digraph {
+namespace cfg::digraph {
 
 DIGraph::DIGraph(int V) : V_(V), preds_(V) {} 
 
@@ -35,6 +35,8 @@ void DIGraph::printDot(std::ostream& out) const {
             gv->addEdge(vs[u], vs[v]);
         }
     }
+
+    gv->printDOT(out);
 }
 
-} // namespace bb_graphs::digraph
+} // namespace cfg::digraph

@@ -3,7 +3,7 @@
 #include <vector>
 #include <ostream>
 
-namespace bb_graphs::digraph {
+namespace cfg::digraph {
 
 class DIGraph {
 public:
@@ -20,4 +20,4 @@ private:
     std::vector<std::vector<int>> preds_;
 };
 
-} // namespace bb_graphs::digraph
+} // namespace cfg::digraph
