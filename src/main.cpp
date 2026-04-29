@@ -4,7 +4,7 @@
 #include "dominator.hpp"
 #include "dt.hpp"
 #include "df.hpp"
-
+#include "dj.hpp"
 
 int main() {
     // cfg::random_cfg::RandomCFG rcfg;
@@ -45,5 +45,9 @@ int main() {
     cfg::df::DominanceFrontier df(dt.idom(), cfg);
     std::ofstream dfOfs("df.dot", std::ios::trunc | std::ios::out);
     df.dft().printDot(dfOfs);
+
+    cfg::dj::DefJoin dj(cfg, dt.dt());
+    std::ofstream djOfs("dj.dot", std::ios::trunc | std::ios::out);
+    dj.dj().printDot(djOfs);
 }
-// ./cfg_algs;  dot -Tpng dt.dot -o dt.png; dot -Tpng cfg.dot -o cfg.png; dot -Tpng df.dot -o df.png
+// ./cfg_algs;  dot -Tpng dt.dot -o dt.png; dot -Tpng cfg.dot -o cfg.png; dot -Tpng df.dot -o df.png; dot -Tpng dj.dot -p dj.png

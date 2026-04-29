@@ -10,16 +10,16 @@ namespace cfg::digraph {
 DIGraph::DIGraph(int V) : V_(V), preds_(V) {} 
 
 void DIGraph::createEdge(int u, int v) {
-    V_[u].push_back(v);
-    preds_[v].push_back(u);
+    V_[u].insert(v);
+    preds_[v].insert(u);
     ++E_;
 }
 
-const std::vector<int>& DIGraph::preds(int v) const {
+const std::set<int>& DIGraph::preds(int v) const {
     return preds_[v];
 }
 
-const std::vector<int>& DIGraph::adjs(int v) const {
+const std::set<int>& DIGraph::adjs(int v) const {
     return V_[v];
 }
 

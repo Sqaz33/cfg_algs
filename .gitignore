@@ -1,3 +1,4 @@
 *build/
 *.dot
 *.png
+!src/*.png

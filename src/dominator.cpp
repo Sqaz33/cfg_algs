@@ -45,9 +45,9 @@ Dominators::Dominators(const digraph::DIGraph& cfg) : domsets_(cfg.V()) {
 
             auto&& preds = cfg.preds(i);
             if (!preds.empty()) {
-                temp = domsets_[preds.front()];
+                temp = domsets_[*preds.begin()];
             }
-            
+
             for (int j : preds) {
                 temp = intersect(temp, domsets_[j]);
             }
