@@ -1,12 +1,49 @@
-#include "random_control_flow.hpp"
-
 #include <fstream>
 
-int main() {
-    cfg::random_cfg::RandomCFG rcfg;
-    
-    std::ofstream ofs("cfg.dot", std::ios::trunc | std::ios::out);
+#include "random_control_flow.hpp"
+#include "dominator.hpp"
+#include "dt.hpp"
+#include "df.hpp"
 
-    auto&& graph = rcfg.cfg();
-    graph.printDot(ofs);
+
+int main() {
+    // cfg::random_cfg::RandomCFG rcfg;
+    
+    std::ofstream cfgOfs("cfg.dot", std::ios::trunc | std::ios::out);
+    // auto&& cfg = rcfg.cfg();
+
+    cfg::digraph::DIGraph cfg(8);
+    cfg.createEdge(0, 1);
+
+    cfg.createEdge(1, 4);
+    cfg.createEdge(1, 2);
+
+    cfg.createEdge(2, 3);
+
+    cfg.createEdge(3, 1);
+
+    cfg.createEdge(4, 5);
+    cfg.createEdge(4, 7);
+
+    cfg.createEdge(5, 1);
+    cfg.createEdge(5, 6);
+    cfg.createEdge(5, 2);
+
+    cfg.createEdge(7, 6);
+
+    cfg.createEdge(6, 3);
+
+
+    cfg.printDot(cfgOfs);
+
+    cfg::dominator::Dominators doms(cfg);
+    cfg::dt::DominatorTree dt(doms, cfg);
+
+    std::ofstream dtOfs("dt.dot", std::ios::trunc | std::ios::out);
+    dt.dt().printDot(dtOfs);
+
+    cfg::df::DominanceFrontier df(dt.idom(), cfg);
+    std::ofstream dfOfs("df.dot", std::ios::trunc | std::ios::out);
+    df.dft().printDot(dfOfs);
 }
+// ./cfg_algs;  dot -Tpng dt.dot -o dt.png; dot -Tpng cfg.dot -o cfg.png; dot -Tpng df.dot -o df.png
