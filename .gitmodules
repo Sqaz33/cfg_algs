@@ -1,0 +1,3 @@
+[submodule "src/graphviz"]
+	path = src/graphviz
+	url = https://github.com/Sqaz33/graphviz_wrapper.git
