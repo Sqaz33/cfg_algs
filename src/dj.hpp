@@ -7,14 +7,14 @@ namespace cfg::dj {
 class DefJoin {
 public:
     DefJoin(
-        const digraph::DIGraph& cfg, 
-        const digraph::DIGraph& dt);
+        const digraph::Digraph& cfg, 
+        const digraph::Digraph& dt);
 
 public:
-    const digraph::DIGraph& dj() const noexcept;
+    const digraph::Digraph& dj() const noexcept;
 
 private:
-    digraph::DIGraph dj_;
+    digraph::Digraph dj_;
 };
 
 } // namespace cfg::dj

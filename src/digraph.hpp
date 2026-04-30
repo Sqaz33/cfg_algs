@@ -6,9 +6,9 @@
 
 namespace cfg::digraph {
 
-class DIGraph {
+class Digraph {
 public:
-    DIGraph(int V);
+    Digraph(int V);
 
 public: 
     void createEdge(int u, int v); 
@@ -18,6 +18,7 @@ public:
     std::size_t V() const noexcept;
     std::size_t E() const noexcept;
     int closest(const std::set<int>& s, int v) const;
+    Digraph reverse() const;
 
 private:
     std::vector<std::set<int>> V_;

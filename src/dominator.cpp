@@ -27,7 +27,7 @@ std::set<int> intersect(const std::set<int>& a, const std::set<int>& b) {
 
 namespace cfg::dominator {
 
-Dominators::Dominators(const digraph::DIGraph& cfg) : domsets_(cfg.V()) {
+Dominators::Dominators(const digraph::Digraph& cfg) : domsets_(cfg.V()) {
     auto r = std::views::iota(0, int(cfg.V()) + 1);
     std::set<int> all(r.begin(), r.end());
 

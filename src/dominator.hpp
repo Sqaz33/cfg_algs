@@ -8,7 +8,7 @@ namespace cfg::dominator {
 
 class Dominators {
 public:
-    Dominators(const digraph::DIGraph& cfg);
+    Dominators(const digraph::Digraph& cfg);
 
 public:
     const std::set<int>& domset(int v) const;

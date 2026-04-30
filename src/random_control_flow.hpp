@@ -20,10 +20,14 @@ public:
     RandomCFG(int vertex = 10);
 
 public:
-    const digraph::DIGraph& cfg() const noexcept;
+    const digraph::Digraph& cfg() const noexcept;
 
 private:
-    digraph::DIGraph graph_;
+    void gen_(int vertex);
+    void linkComponentsWithEntry_();
+
+private:
+    digraph::Digraph graph_;
 };
 
 } // namespace cfg::random_cfg 

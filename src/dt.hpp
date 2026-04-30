@@ -9,14 +9,14 @@ class DominatorTree {
 public:
     DominatorTree(
         const dominator::Dominators& doms, 
-        const digraph::DIGraph& cfg);
+        const digraph::Digraph& cfg);
 
 public:
-    const digraph::DIGraph& dt() const noexcept;
+    const digraph::Digraph& dt() const noexcept;
     const std::vector<int>& idom() const noexcept;
 
 private:
-    digraph::DIGraph dt_;
+    digraph::Digraph dt_;
     std::vector<int> idom_;
 };
 

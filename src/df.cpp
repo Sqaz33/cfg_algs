@@ -4,7 +4,7 @@ namespace cfg::df {
 
 DominanceFrontier::DominanceFrontier(
     const std::vector<int>& idom, 
-    const digraph::DIGraph& cfg) : dft_(cfg.V()), df_(cfg.V())
+    const digraph::Digraph& cfg) : dft_(cfg.V()), df_(cfg.V())
 {
     for (int i = 0; i < cfg.V(); ++i) {
         for (int p : cfg.preds(i)) {
@@ -18,7 +18,7 @@ DominanceFrontier::DominanceFrontier(
     }
 }
 
-const digraph::DIGraph& DominanceFrontier::dft() const noexcept {
+const digraph::Digraph& DominanceFrontier::dft() const noexcept {
     return dft_;
 }
 

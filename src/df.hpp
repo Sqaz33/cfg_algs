@@ -9,14 +9,14 @@ class DominanceFrontier {
 public:
     DominanceFrontier(
         const std::vector<int>& idom, 
-        const digraph::DIGraph& cfg);
+        const digraph::Digraph& cfg);
 
 public:
-    const digraph::DIGraph& dft() const noexcept;
+    const digraph::Digraph& dft() const noexcept;
     const std::vector<std::set<int>>& df() const noexcept;
 
 private:
-    digraph::DIGraph dft_;
+    digraph::Digraph dft_;
     std::vector<std::set<int>> df_;
 };
 

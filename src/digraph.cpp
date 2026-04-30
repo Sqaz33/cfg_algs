@@ -7,23 +7,23 @@
 
 namespace cfg::digraph {
 
-DIGraph::DIGraph(int V) : V_(V), preds_(V) {} 
+Digraph::Digraph(int V) : V_(V), preds_(V) {} 
 
-void DIGraph::createEdge(int u, int v) {
+void Digraph::createEdge(int u, int v) {
     V_[u].insert(v);
     preds_[v].insert(u);
     ++E_;
 }
 
-const std::set<int>& DIGraph::preds(int v) const {
+const std::set<int>& Digraph::preds(int v) const {
     return preds_[v];
 }
 
-const std::set<int>& DIGraph::adjs(int v) const {
+const std::set<int>& Digraph::adjs(int v) const {
     return V_[v];
 }
 
-void DIGraph::printDot(std::ostream& out) const {
+void Digraph::printDot(std::ostream& out) const {
     graphviz::GraphViz gv(false, true, "CFG");
 
     std::vector<graphviz::VertexType> vs(V_.size());
@@ -41,15 +41,15 @@ void DIGraph::printDot(std::ostream& out) const {
     gv.printDOT(out);
 }
 
-std::size_t DIGraph::V() const noexcept {
+std::size_t Digraph::V() const noexcept {
     return V_.size();
 }
 
-std::size_t DIGraph::E() const noexcept {
+std::size_t Digraph::E() const noexcept {
     return E_;
 }
 
-int DIGraph::closest(const std::set<int>& s, int v) const {
+int Digraph::closest(const std::set<int>& s, int v) const {
     std::queue<int> q;
     q.push(v);
     std::vector<bool> mark(V(), false);
@@ -71,6 +71,12 @@ int DIGraph::closest(const std::set<int>& s, int v) const {
     }
 
     return -1;
+}
+
+Digraph Digraph::reverse() const {
+    Digraph d(*this);
+    std::swap(d.preds_, d.V_);
+    return d;
 }
 
 } // namespace cfg::digraph

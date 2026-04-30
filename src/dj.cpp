@@ -3,8 +3,8 @@
 namespace cfg::dj {
 
 DefJoin::DefJoin(
-    const digraph::DIGraph& cfg, 
-    const digraph::DIGraph& dt) : dj_(dt)
+    const digraph::Digraph& cfg, 
+    const digraph::Digraph& dt) : dj_(dt)
 {
     for (int i = 0; i < cfg.V(); ++i) {
         auto&& dtAdjs = dt.adjs(i);
@@ -16,7 +16,7 @@ DefJoin::DefJoin(
     }
 }
 
-const digraph::DIGraph& DefJoin::dj() const noexcept {
+const digraph::Digraph& DefJoin::dj() const noexcept {
     return dj_;
 }
 
