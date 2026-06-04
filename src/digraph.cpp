@@ -5,6 +5,25 @@
 
 #include "graphviz.hpp"
 
+namespace {
+
+void dfpo(
+    const cfg::digraph::Digraph& g, 
+    int v, 
+    std::vector<int>& res, 
+    std::vector<bool>& marked) 
+{
+    marked[v] = true;
+    for (int u : g.adjs(v)) {
+        if (!marked[u]) {
+            dfpo(g, u, res, marked);
+        }
+    }
+    res.push_back(v);
+}
+
+} // namespace 
+
 namespace cfg::digraph {
 
 Digraph::Digraph(int V) : V_(V), preds_(V) {} 
@@ -77,6 +96,14 @@ Digraph Digraph::reverse() const {
     Digraph d(*this);
     std::swap(d.preds_, d.V_);
     return d;
+}
+
+std::vector<int> Digraph::po() const {
+    std::vector<int> res;
+    res.reserve(V_.size());
+    std::vector<bool> marked(V_.size(), false);
+    dfpo(*this, 0, res, marked);
+    return res;
 }
 
 } // namespace cfg::digraph

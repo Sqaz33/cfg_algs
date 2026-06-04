@@ -15,7 +15,7 @@ std::set<int> intersect(const std::set<int>& a, const std::set<int>& b) {
         minSz = &a;
         maxSz = &b;
     }
-
+    
     for (int x : *minSz) {
         if (maxSz->contains(x)) {
             res.insert(x);

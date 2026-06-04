@@ -19,6 +19,7 @@ public:
     std::size_t E() const noexcept;
     int closest(const std::set<int>& s, int v) const;
     Digraph reverse() const;
+    std::vector<int> po() const;
 
 private:
     std::vector<std::set<int>> V_;
