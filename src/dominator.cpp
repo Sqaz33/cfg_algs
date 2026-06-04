@@ -29,7 +29,7 @@ namespace cfg::dominator {
 
 Dominators::Dominators(const digraph::Digraph& cfg) : domsets_(cfg.V()) {
     auto r = std::views::iota(0, int(cfg.V()) + 1);
-    std::set<int> all(r.begin(), r.end());
+    const std::set<int> all(r.begin(), r.end());
 
     for (auto&& doms : domsets_) {
         doms = all;
