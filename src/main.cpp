@@ -19,28 +19,6 @@ int main(int argc, char** argv) {
     std::ofstream cfgOfs("cfg.dot", std::ios::trunc | std::ios::out);
     auto&& cfg = rcfg.cfg();
 
-    // cfg::digraph::Digraph cfg(8);
-    // cfg.createEdge(0, 1);
-
-    // cfg.createEdge(1, 4);
-    // cfg.createEdge(1, 2);
-
-    // cfg.createEdge(2, 3);
-
-    // cfg.createEdge(3, 1);
-
-    // cfg.createEdge(4, 5);
-    // cfg.createEdge(4, 7);
-
-    // cfg.createEdge(5, 1);
-    // cfg.createEdge(5, 6);
-    // cfg.createEdge(5, 2);
-
-    // cfg.createEdge(7, 6);
-
-    // cfg.createEdge(6, 3);
-
-
     cfg.printDot(cfgOfs);
     cfgOfs.close();
 
