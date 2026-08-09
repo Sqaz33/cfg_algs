@@ -8,6 +8,9 @@ DominanceFrontier::DominanceFrontier(
 {
     for (int i = 0; i < cfg.V(); ++i) {
         for (int p : cfg.preds(i)) {
+            if (idom[p] == -1) {
+                continue;
+            }
             int r = p;
             while (r != idom[i]) {
                 dft_.createEdge(r, i);
